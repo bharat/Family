@@ -8,10 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MapViewController: UIViewController {
+
+    @IBOutlet var mapView: GMSMapView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
+        mapView.settings.compassButton = true
+        mapView.settings.myLocationButton = true
+        
+        LocationService.setMapView(mapView)
         // Do any additional setup after loading the view, typically from a nib.
     }
 
