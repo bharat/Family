@@ -43,7 +43,7 @@
         <!--Peeps-->
         <scene sceneID="pnw-nz-sQo">
             <objects>
-                <viewController id="XYi-IF-oT2" customClass="PeepsViewController" customModule="Family" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XYi-IF-oT2" customClass="TableViewController" customModule="Family" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="evQ-tK-69D"/>
                         <viewControllerLayoutGuide type="bottom" id="eL6-Kv-nch"/>

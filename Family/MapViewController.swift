@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SimplifiedNotificationCenter
 
 class MapViewController: UIViewController {
     @IBOutlet var mapView: GMSMapView!

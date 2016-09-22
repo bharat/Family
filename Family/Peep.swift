@@ -13,7 +13,7 @@ class Peep {
     var name: String
     var marker: GMSMarker
     var address: String?
-    var geocoder: GMSGeocoder
+    var geocoder: GMSGeocoder = GMSGeocoder()
     
     init(id: String, name: String, marker: GMSMarker) {
         self.id = id
@@ -32,4 +32,3 @@ class Peep {
         }
     }
 }
-

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PeepsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -23,8 +23,7 @@ class PeepsViewController: UIViewController, UITableViewDataSource, UITableViewD
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let peep = Central.c.peeps[indexPath.row]
-        print("Notifying about selection: \(peep)")
-        Central.c.selectPeep(peep)
+        Central.c.showPeepOnMap(peep)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
