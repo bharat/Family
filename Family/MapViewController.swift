@@ -7,27 +7,23 @@
 //
 
 import UIKit
+import SimplifiedNotificationCenter
 
 class MapViewController: UIViewController {
-
     @IBOutlet var mapView: GMSMapView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         mapView.settings.compassButton = true
         mapView.settings.myLocationButton = true
-        
-        LocationService.setMapView(mapView)
-        // Do any additional setup after loading the view, typically from a nib.
+
+        Central.attach(self)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
