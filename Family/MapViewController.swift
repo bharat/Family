@@ -16,13 +16,13 @@ class MapViewController: UIViewController {
         
         mapView.settings.compassButton = true
         mapView.settings.myLocationButton = true
+        mapView.animateToZoom(4)
 
         Central.attach(self)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
 

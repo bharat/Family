@@ -12,10 +12,11 @@ class SyntheticPeep: Peep {
     
     init() {
         super.init(id: String.random(10, "A"..."Z"),
-                   name: String.random(10, "A"..."Z"),
-                   marker: GMSMarker(position: CLLocationCoordinate2D(
-                    latitude: CLLocationDegrees(Double.random(-180...180)),
-                    longitude: CLLocationDegrees(Double.random(-180.00...180.00)))))
+                   name: String.random(10, "A"..."Z"))
+        
+        self.setCoordinates(CLLocationCoordinate2D(
+            latitude: CLLocationDegrees(Double.random(20.00...50.00)),
+            longitude: CLLocationDegrees(Double.random(-130.00...(-70.00)))))
     }
     
 }

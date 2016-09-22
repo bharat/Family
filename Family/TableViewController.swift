@@ -16,14 +16,10 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         Central.attach(self)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let peep = Central.c.peeps[indexPath.row]
-        Central.c.showPeepOnMap(peep)
+        Central.c.switchToMap()
+        Central.c.selectPeep(peep)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -40,6 +36,10 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.textLabel?.text = peep.name
         cell.detailTextLabel?.text = peep.address
         return cell
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
 }
 

@@ -11,24 +11,34 @@ import Foundation
 class Peep {
     var id: String
     var name: String
-    var marker: GMSMarker
+    var marker: GMSMarker = GMSMarker()
     var address: String?
     var geocoder: GMSGeocoder = GMSGeocoder()
     
-    init(id: String, name: String, marker: GMSMarker) {
+    init(id: String, name: String) {
         self.id = id
         self.name = name
-        self.marker = marker
         self.geocoder = GMSGeocoder()
+        
+        // Simuator doesn't have a name
+        if name.isEmpty {
+            self.name = "Unknown"
+        }
+        
+        self.marker.title = self.name
     }
     
-    func setLocation(location: CLLocation) {
-        marker.position = location.coordinate
+    func setCoordinates(location: CLLocationCoordinate2D) {
+        marker.position = location
         geocoder.reverseGeocodeCoordinate(marker.position) { response, error in
+            self.address = "Unknown"
             if let address = response?.firstResult() {
                 let lines = address.lines! as [String]
                 self.address = lines.joinWithSeparator("\n")
             }
+            
+            self.marker.snippet = self.address
+            Central.c.update()
         }
     }
 }

@@ -18,7 +18,7 @@ class LocationService {
     }
     
     func success(foundLocation: CLLocation) {
-        Central.c.locatedMyself(foundLocation)
+        Central.c.locatedMyself(foundLocation.coordinate)
     }
     
     func error(lastValidLocation: CLLocation?, error: LocationError) {
