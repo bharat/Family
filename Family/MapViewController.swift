@@ -9,7 +9,11 @@
 import UIKit
 
 class MapViewController: UIViewController {
-    @IBOutlet var mapView: GMSMapView!
+    @IBOutlet var mapView: GMSMapView! {
+        didSet {
+            Central.c.updateMapView(mapView)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +22,7 @@ class MapViewController: UIViewController {
         mapView.settings.myLocationButton = true
         mapView.animateToZoom(4)
 
-        Central.attach(self)
+        Central.c.attach(self)
     }
 
     override func didReceiveMemoryWarning() {

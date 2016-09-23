@@ -11,28 +11,37 @@ import Foundation
 class Central {
     static var c: Central = Central()
     var loc: LocationService = LocationService()
-    var peeps: Peeps = Peeps()
+    var peeps: [String: Peep] = [:]
     var me: Peep
     var mapVC: MapViewController?
     var tableVC: TableViewController?
 
     private init() {
-        me = Peep(id: UIDevice.currentDevice().identifierForVendor!.UUIDString,
-                  name: NSUserName())
-
+        me = Peep(name: "Bharat")
         addPeep(me)
     }
     
-    static func attach(vc: UIViewController) {
+    func attach(vc: UIViewController) {
         if vc is MapViewController {
-            c.mapVC = (vc as! MapViewController)
+            mapVC = (vc as! MapViewController)
         } else {
-            c.tableVC = (vc as! TableViewController)
+            tableVC = (vc as! TableViewController)
         }
     }
     
     func switchToMap() {
         mapVC?.tabBarController?.selectedViewController = mapVC
+    }
+    
+    func changeUser(name: String) {
+        for peep in peeps.values {
+            peep.marker.map = nil
+        }
+        peeps.removeAll()
+        me = Peep(name: name)
+        addPeep(me)
+        loc.stop()
+        loc.start()
     }
     
     func selectPeep(peep: Peep) {
@@ -43,7 +52,7 @@ class Central {
     
     func addPeep(peep: Peep) {
         peep.marker.map = mapVC?.mapView
-        peeps.add(peep)
+        peeps[peep.name] = peep
         update()
     }
     
@@ -51,31 +60,17 @@ class Central {
         tableVC?.tableView.reloadData()
     }
     
-    func locatedMyself(coords: CLLocationCoordinate2D) {
-        if me.marker.map == nil {
-            // my marker was initialized before the MapViewController was available,
-            // so fix it up now.
-            me.marker.map = mapVC?.mapView
+    func updateMapView(mapView: GMSMapView!) {
+        for peep in peeps.values {
+            peep.marker.map = mapView
         }
-        
+    }
+    
+    func locatedMyself(coords: CLLocationCoordinate2D) {
         me.setCoordinates(coords)
         switchToMap()
         selectPeep(me)
-        update()
-    }
-    
-    // Add a new synthetic peep every 10 seconds
-    static func addSyntheticLoop() {
-        dispatch_after(
-            dispatch_time(
-                DISPATCH_TIME_NOW,
-                Int64(10 * Double(NSEC_PER_SEC))
-            ),
-            dispatch_get_main_queue(), {
-                self.c.addPeep(SyntheticPeep())
-                self.addSyntheticLoop()
-            }
-        )
         
+        update()
     }
 }

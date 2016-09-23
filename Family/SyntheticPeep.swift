@@ -7,16 +7,17 @@
 //
 
 import Foundation
+import RandomKit
 
 class SyntheticPeep: Peep {
     
-    init() {
-        super.init(id: String.random(10, "A"..."Z"),
-                   name: String.random(10, "A"..."Z"))
+    override init(name: String) {
+        super.init(name: name)
         
         self.setCoordinates(CLLocationCoordinate2D(
             latitude: CLLocationDegrees(Double.random(20.00...50.00)),
             longitude: CLLocationDegrees(Double.random(-130.00...(-70.00)))))
+        self.marker.icon = UIImage(named: name)
     }
     
 }

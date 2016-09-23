@@ -6,6 +6,48 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Settings-->
+        <scene sceneID="dkB-h8-4w3">
+            <objects>
+                <viewController id="Eri-hk-xHF" customClass="SettingsViewController" customModule="Family" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GHl-nF-E22"/>
+                        <viewControllerLayoutGuide type="bottom" id="fGj-70-ei0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iQa-Pt-UdG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who are you?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yn8-mm-OOC">
+                                <rect key="frame" x="20" y="20" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ui3-6Z-iIp">
+                                <rect key="frame" x="20" y="49" width="286" height="124"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Eri-hk-xHF" id="Dvc-ld-RWi"/>
+                                    <outlet property="delegate" destination="Eri-hk-xHF" id="0Wy-dM-mxu"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yn8-mm-OOC" firstAttribute="top" secondItem="GHl-nF-E22" secondAttribute="bottom" id="E8G-SB-3Sc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yn8-mm-OOC" secondAttribute="trailing" id="REc-qt-0cS"/>
+                            <constraint firstItem="yn8-mm-OOC" firstAttribute="leading" secondItem="iQa-Pt-UdG" secondAttribute="leadingMargin" id="qSo-MJ-O5g"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="Settings View" id="cfl-UG-O6E"/>
+                    <connections>
+                        <outlet property="peepPicker" destination="Ui3-6Z-iIp" id="mW3-ZU-VCl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DKr-z2-YdG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1113" y="-455"/>
+        </scene>
         <!--Map-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -31,7 +73,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="snu-2e-5tD" secondAttribute="trailing" id="fbg-Tz-IKJ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" image="Maps Tab Selected" id="JR5-ne-4K6"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="Map View" id="JR5-ne-4K6"/>
                     <connections>
                         <outlet property="mapView" destination="snu-2e-5tD" id="2t7-t0-Wra"/>
                     </connections>
@@ -95,7 +137,7 @@
                             <constraint firstItem="0vS-ZZ-DSQ" firstAttribute="leading" secondItem="HfW-VW-X0r" secondAttribute="leadingMargin" id="n8O-AD-6et"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Peeps" image="Family Selected" id="skW-Dx-eTI"/>
+                    <tabBarItem key="tabBarItem" title="Peeps" image="Table View" id="skW-Dx-eTI"/>
                     <connections>
                         <outlet property="tableView" destination="0vS-ZZ-DSQ" id="9tl-R0-qtQ"/>
                     </connections>
@@ -116,6 +158,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="ri6-Hd-l4X"/>
                         <segue destination="XYi-IF-oT2" kind="relationship" relationship="viewControllers" id="J44-pC-9We"/>
+                        <segue destination="Eri-hk-xHF" kind="relationship" relationship="viewControllers" id="Ksb-AH-8kx"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5N0-bD-yTf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -124,7 +167,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Family Selected" width="25" height="25"/>
-        <image name="Maps Tab Selected" width="25" height="25"/>
+        <image name="Map View" width="25" height="25"/>
+        <image name="Settings View" width="25" height="25"/>
+        <image name="Table View" width="25" height="25"/>
     </resources>
 </document>

@@ -9,14 +9,12 @@
 import Foundation
 
 class Peep {
-    var id: String
     var name: String
     var marker: GMSMarker = GMSMarker()
     var address: String?
     var geocoder: GMSGeocoder = GMSGeocoder()
     
-    init(id: String, name: String) {
-        self.id = id
+    init(name: String) {
         self.name = name
         self.geocoder = GMSGeocoder()
         
@@ -26,6 +24,7 @@ class Peep {
         }
         
         self.marker.title = self.name
+        self.marker.icon = UIImage(named: self.name)
     }
     
     func setCoordinates(location: CLLocationCoordinate2D) {

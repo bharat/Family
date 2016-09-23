@@ -13,11 +13,11 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Central.attach(self)
+        Central.c.attach(self)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let peep = Central.c.peeps[indexPath.row]
+        let peep = Array(Central.c.peeps.values)[indexPath.row]
         Central.c.switchToMap()
         Central.c.selectPeep(peep)
     }
@@ -32,7 +32,7 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("LilPeeper")! as UITableViewCell
-        let peep = Central.c.peeps[indexPath.row]
+        let peep = Array(Central.c.peeps.values)[indexPath.row]
         cell.textLabel?.text = peep.name
         cell.detailTextLabel?.text = peep.address
         return cell
