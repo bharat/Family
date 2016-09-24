@@ -10,6 +10,7 @@ import Foundation
 
 class Central {
     static var c: Central = Central()
+    var store: Store = Store()
     var loc: LocationService = LocationService()
     var peeps: [String: Peep] = [:]
     var me: Peep
@@ -66,11 +67,33 @@ class Central {
         }
     }
     
+    func locatedOtherPeep(name: String, lastUpdated: NSDate, coords: CLLocationCoordinate2D) {
+        if name == me.name {
+            return
+        }
+        
+        var peep = peeps[name]
+        if peep == nil {
+            peep = Peep(name: name)
+            addPeep(peep!)
+        }
+        
+        peep!.lastUpdated = lastUpdated
+        peep!.marker.position = coords
+    }
+    
     func locatedMyself(coords: CLLocationCoordinate2D) {
         me.setCoordinates(coords)
+        me.lastUpdated = NSDate()
+        
         switchToMap()
         selectPeep(me)
         
         update()
+        store.push(me)
+    }
+    
+    func getLocations() {
+        store.load()
     }
 }

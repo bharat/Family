@@ -24,6 +24,10 @@ class MapViewController: UIViewController {
 
         Central.c.attach(self)
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        Central.c.getLocations()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

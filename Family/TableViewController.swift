@@ -15,6 +15,10 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         Central.c.attach(self)
     }
+
+    override func viewDidAppear(animated: Bool) {
+        Central.c.getLocations()
+    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let peep = Array(Central.c.peeps.values)[indexPath.row]

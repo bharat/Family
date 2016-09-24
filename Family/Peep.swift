@@ -13,6 +13,7 @@ class Peep {
     var marker: GMSMarker = GMSMarker()
     var address: String?
     var geocoder: GMSGeocoder = GMSGeocoder()
+    var lastUpdated: NSDate?
     
     init(name: String) {
         self.name = name

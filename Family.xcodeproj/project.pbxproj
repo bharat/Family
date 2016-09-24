@@ -20,6 +20,7 @@
 		4F7FBA441D9459360030B5D9 /* Peep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FBA431D9459360030B5D9 /* Peep.swift */; };
 		4F7FBA481D947BAD0030B5D9 /* SyntheticPeep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FBA471D947BAD0030B5D9 /* SyntheticPeep.swift */; };
 		4F7FBA4A1D95C56B0030B5D9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FBA491D95C56B0030B5D9 /* SettingsViewController.swift */; };
+		4F7FBA4C1D95ECDD0030B5D9 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FBA4B1D95ECDD0030B5D9 /* Store.swift */; };
 		6B4FB6CA0B89BA09453DBB90 /* Pods_Family.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62AA5325736DDC7987AB925A /* Pods_Family.framework */; };
 		848BA2A50FC21F3D8F830C6C /* Pods_FamilyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FFBB461BED2B5CC3B9CB5C8 /* Pods_FamilyTests.framework */; };
 		B6E2744527D876B58C2AF988 /* Pods_FamilyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6D64A0A638D4EABC117C6C /* Pods_FamilyUITests.framework */; };
@@ -65,6 +66,7 @@
 		4F7FBA431D9459360030B5D9 /* Peep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Peep.swift; sourceTree = "<group>"; };
 		4F7FBA471D947BAD0030B5D9 /* SyntheticPeep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyntheticPeep.swift; sourceTree = "<group>"; };
 		4F7FBA491D95C56B0030B5D9 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		4F7FBA4B1D95ECDD0030B5D9 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		4FFBB461BED2B5CC3B9CB5C8 /* Pods_FamilyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FamilyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62AA5325736DDC7987AB925A /* Pods_Family.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Family.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A97AD51079679B85708FF2A /* Pods-Family.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Family.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Family/Pods-Family.debug.xcconfig"; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				4F2CED7E1D85E6E800274062 /* AppDelegate.swift */,
 				4F2CED851D85E6E800274062 /* Assets.xcassets */,
 				4F21DD8C1D91F082008DC70F /* Central.swift */,
+				4F7FBA4B1D95ECDD0030B5D9 /* Store.swift */,
 				4F2CED8A1D85E6E800274062 /* Info.plist */,
 				4F2CED871D85E6E800274062 /* LaunchScreen.storyboard */,
 				4F2CEDAC1D85E9B600274062 /* LocationService.swift */,
@@ -462,6 +465,7 @@
 				4F7FBA441D9459360030B5D9 /* Peep.swift in Sources */,
 				4F2CEDAD1D85E9B600274062 /* LocationService.swift in Sources */,
 				4F2CED7F1D85E6E800274062 /* AppDelegate.swift in Sources */,
+				4F7FBA4C1D95ECDD0030B5D9 /* Store.swift in Sources */,
 				4F7FBA4A1D95C56B0030B5D9 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
