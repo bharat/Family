@@ -10,10 +10,28 @@ import Foundation
 
 class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     @IBOutlet var peepPicker: UIPickerView!
+    @IBOutlet var lock: UISwitch!
+    @IBOutlet var code: UITextField!
     let pickerData = ["Ally", "Bettina", "Bharat", "Cole"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        lock.setOn(true, animated: true)
+        peepPicker.userInteractionEnabled = !lock.on
+        peepPicker.selectRow(pickerData.indexOf(Central.c.me.name)!, inComponent: 0, animated: true)
+        code.text = ""
+    }
+
+    @IBAction func lockValueChanged(sender: UISwitch) {
+        if !lock.on && code.text != "kakao" {
+            lock.setOn(true, animated: true)
+            return
+        }
+
+        peepPicker.userInteractionEnabled = !lock.on
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {

@@ -79,7 +79,7 @@ class Central {
         }
         
         peep!.lastUpdated = lastUpdated
-        peep!.marker.position = coords
+        peep!.setCoordinates(coords)
     }
     
     func locatedMyself(coords: CLLocationCoordinate2D) {

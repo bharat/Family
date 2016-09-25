@@ -31,22 +31,58 @@
                                     <outlet property="delegate" destination="Eri-hk-xHF" id="0Wy-dM-mxu"/>
                                 </connections>
                             </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Locked" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zBC-G6-e7i">
+                                <rect key="frame" x="20" y="510" width="56" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3N-1v-uAx">
+                                <rect key="frame" x="247" y="510" width="41" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="banana" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A3f-Hi-a2c">
+                                <rect key="frame" x="296" y="505" width="70" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="0g6-mA-PJB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NWR-dq-Ys3">
+                                <rect key="frame" x="85" y="505" width="51" height="31"/>
+                                <connections>
+                                    <action selector="lockValueChanged:" destination="Eri-hk-xHF" eventType="valueChanged" id="KX2-LA-H7K"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="A3f-Hi-a2c" firstAttribute="centerY" secondItem="K3N-1v-uAx" secondAttribute="centerY" id="7DN-9t-An4"/>
+                            <constraint firstItem="NWR-dq-Ys3" firstAttribute="leading" secondItem="zBC-G6-e7i" secondAttribute="trailing" constant="9" id="7M7-s2-Aaf"/>
                             <constraint firstItem="yn8-mm-OOC" firstAttribute="top" secondItem="GHl-nF-E22" secondAttribute="bottom" id="E8G-SB-3Sc"/>
+                            <constraint firstItem="K3N-1v-uAx" firstAttribute="leading" secondItem="NWR-dq-Ys3" secondAttribute="trailing" constant="113" id="Eyh-bW-6da"/>
+                            <constraint firstItem="zBC-G6-e7i" firstAttribute="leading" secondItem="iQa-Pt-UdG" secondAttribute="leadingMargin" id="IiU-zF-La4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yn8-mm-OOC" secondAttribute="trailing" id="REc-qt-0cS"/>
+                            <constraint firstItem="NWR-dq-Ys3" firstAttribute="centerY" secondItem="zBC-G6-e7i" secondAttribute="centerY" id="UcW-RS-jBf"/>
+                            <constraint firstItem="K3N-1v-uAx" firstAttribute="centerY" secondItem="NWR-dq-Ys3" secondAttribute="centerY" id="Ycp-nX-hay"/>
+                            <constraint firstItem="A3f-Hi-a2c" firstAttribute="leading" secondItem="K3N-1v-uAx" secondAttribute="trailing" constant="8" id="ZRk-2r-S0F"/>
+                            <constraint firstItem="fGj-70-ei0" firstAttribute="top" secondItem="zBC-G6-e7i" secondAttribute="bottom" constant="20" id="aSR-0J-Pn5"/>
                             <constraint firstItem="yn8-mm-OOC" firstAttribute="leading" secondItem="iQa-Pt-UdG" secondAttribute="leadingMargin" id="qSo-MJ-O5g"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="Settings View" id="cfl-UG-O6E"/>
                     <connections>
+                        <outlet property="code" destination="A3f-Hi-a2c" id="WoK-Gd-UPR"/>
+                        <outlet property="lock" destination="NWR-dq-Ys3" id="Pz6-h2-w8D"/>
                         <outlet property="peepPicker" destination="Ui3-6Z-iIp" id="mW3-ZU-VCl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DKr-z2-YdG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1113" y="-455"/>
+            <point key="canvasLocation" x="1113" y="-407"/>
         </scene>
         <!--Map-->
         <scene sceneID="tne-QT-ifu">

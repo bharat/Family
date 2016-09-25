@@ -30,6 +30,8 @@ class Peep {
     
     func setCoordinates(location: CLLocationCoordinate2D) {
         marker.position = location
+        
+        // Reverse geocoding should probably move to LocationService
         geocoder.reverseGeocodeCoordinate(marker.position) { response, error in
             self.address = "Unknown"
             if let address = response?.firstResult() {
