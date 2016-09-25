@@ -5,21 +5,20 @@
 //  Created by Bharat Mediratta on 9/11/16.
 //  Copyright © 2016 Bharat Mediratta. All rights reserved.
 //
-
 import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let googleMapsApiKey = "AIzaSyDxT_S9ImXM5a45nDmuOCjPwIGT8fTpB74"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        // Override point for customization after application launch.
         print("application")
 
-        // Override point for customization after application launch.
-        GMSServices.provideAPIKey(googleMapsApiKey)
-        
+        let api_key = NSBundle.mainBundle().objectForInfoDictionaryKey("GOOGLE_MAPS_API_KEY") as! String
+        GMSServices.provideAPIKey(api_key)
+
         return true
     }
 

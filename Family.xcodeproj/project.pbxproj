@@ -21,6 +21,8 @@
 		4F7FBA481D947BAD0030B5D9 /* SyntheticPeep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FBA471D947BAD0030B5D9 /* SyntheticPeep.swift */; };
 		4F7FBA4A1D95C56B0030B5D9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FBA491D95C56B0030B5D9 /* SettingsViewController.swift */; };
 		4F7FBA4C1D95ECDD0030B5D9 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7FBA4B1D95ECDD0030B5D9 /* Store.swift */; };
+		4F7FBA501D983E620030B5D9 /* Keys.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4F7FBA4F1D983E620030B5D9 /* Keys.debug.xcconfig */; };
+		4F7FBA521D9853120030B5D9 /* Keys.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4F7FBA511D9853120030B5D9 /* Keys.release.xcconfig */; };
 		6B4FB6CA0B89BA09453DBB90 /* Pods_Family.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62AA5325736DDC7987AB925A /* Pods_Family.framework */; };
 		848BA2A50FC21F3D8F830C6C /* Pods_FamilyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FFBB461BED2B5CC3B9CB5C8 /* Pods_FamilyTests.framework */; };
 		B6E2744527D876B58C2AF988 /* Pods_FamilyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6D64A0A638D4EABC117C6C /* Pods_FamilyUITests.framework */; };
@@ -67,6 +69,8 @@
 		4F7FBA471D947BAD0030B5D9 /* SyntheticPeep.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyntheticPeep.swift; sourceTree = "<group>"; };
 		4F7FBA491D95C56B0030B5D9 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4F7FBA4B1D95ECDD0030B5D9 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		4F7FBA4F1D983E620030B5D9 /* Keys.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Keys.debug.xcconfig; sourceTree = "<group>"; };
+		4F7FBA511D9853120030B5D9 /* Keys.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Keys.release.xcconfig; sourceTree = "<group>"; };
 		4FFBB461BED2B5CC3B9CB5C8 /* Pods_FamilyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FamilyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62AA5325736DDC7987AB925A /* Pods_Family.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Family.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A97AD51079679B85708FF2A /* Pods-Family.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Family.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Family/Pods-Family.debug.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 		4F2CED721D85E6E800274062 = {
 			isa = PBXGroup;
 			children = (
+				4F7FBA4F1D983E620030B5D9 /* Keys.debug.xcconfig */,
+				4F7FBA511D9853120030B5D9 /* Keys.release.xcconfig */,
 				4F2CED7D1D85E6E800274062 /* Family */,
 				4F2CED921D85E6E800274062 /* FamilyTests */,
 				4F2CED9D1D85E6E800274062 /* FamilyUITests */,
@@ -308,8 +314,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F7FBA521D9853120030B5D9 /* Keys.release.xcconfig in Resources */,
 				4F2CED891D85E6E800274062 /* LaunchScreen.storyboard in Resources */,
 				4F2CED861D85E6E800274062 /* Assets.xcassets in Resources */,
+				4F7FBA501D983E620030B5D9 /* Keys.debug.xcconfig in Resources */,
 				4F2CED841D85E6E800274062 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,6 +531,7 @@
 /* Begin XCBuildConfiguration section */
 		4F2CEDA11D85E6E800274062 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F7FBA4F1D983E620030B5D9 /* Keys.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -539,7 +548,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Bharat MEDIRATTA (892MGCYL8F)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -568,6 +577,7 @@
 		};
 		4F2CEDA21D85E6E800274062 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F7FBA511D9853120030B5D9 /* Keys.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
