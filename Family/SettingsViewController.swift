@@ -8,34 +8,37 @@
 
 import Foundation
 
-class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-    @IBOutlet var peepPicker: UIPickerView!
-    @IBOutlet var lock: UISwitch!
+class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+    @IBOutlet var password: UIView!
     @IBOutlet var code: UITextField!
+    
+    @IBOutlet var settings: UIView!
+    @IBOutlet var peepPicker: UIPickerView!
     let pickerData = ["Ally", "Bettina", "Bharat", "Cole"]
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     override func viewDidAppear(animated: Bool) {
-        lock.setOn(true, animated: true)
-        peepPicker.userInteractionEnabled = !lock.on
-        peepPicker.selectRow(pickerData.indexOf(Central.c.me.name)!, inComponent: 0, animated: true)
+        settings.hidden = true
+        password.hidden = false
+        
         code.text = ""
+        peepPicker.selectRow(pickerData.indexOf(Central.c.me.name)!, inComponent: 0, animated: true)
     }
 
-    @IBAction func lockValueChanged(sender: UISwitch) {
-        if !lock.on && code.text != "kakao" {
-            lock.setOn(true, animated: true)
-            return
-        }
 
-        peepPicker.userInteractionEnabled = !lock.on
-    }
-    
+    // MARK: UIPickerViewDelegate
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
+    }
+
+    // MARK: UITextFieldDelegate
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        code.resignFirstResponder()
+        if code.text == "kakao" {
+            password.hidden = true
+            settings.hidden = false
+        }
+        return false
     }
     
     // MARK: UIPickerViewDataSource

@@ -18,7 +18,12 @@ class Central {
     var tableVC: TableViewController?
 
     private init() {
-        me = Peep(name: "Bharat")
+        var myName = NSUserDefaults.standardUserDefaults().stringForKey("UserName")
+        if myName == nil {
+            myName = "Bharat" // got start somewhere
+        }
+        
+        me = Peep(name: myName!)
         addPeep(me)
     }
     
@@ -43,6 +48,7 @@ class Central {
         addPeep(me)
         loc.stop()
         loc.start()
+        NSUserDefaults.standardUserDefaults().setValue(name, forKeyPath: "UserName")
     }
     
     func selectPeep(peep: Peep) {
