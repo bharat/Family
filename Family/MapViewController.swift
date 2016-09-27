@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, GMSMapViewDelegate {
     @IBOutlet var mapView: GMSMapView! {
         didSet {
             Central.c.updateMapView(mapView)
@@ -18,9 +18,14 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mapView.settings.compassButton = true
-        mapView.settings.myLocationButton = true
-        mapView.animateToZoom(4)
+        mapView.delegate = self
+        mapView.settings.tiltGestures = false
+        
+        var zoom = NSUserDefaults.standardUserDefaults().floatForKey("MapZoom")
+        if zoom == 0 {
+            zoom = 15
+        }
+        mapView.animateToZoom(zoom)
 
         Central.c.attach(self)
     }
@@ -31,6 +36,12 @@ class MapViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    // MARK: GMSMapViewDelegate
+    func mapView(mapView: GMSMapView, idleAtCameraPosition position: GMSCameraPosition) {
+        NSUserDefaults.standardUserDefaults().setFloat(position.zoom, forKey: "MapZoom")
+        position.zoom
     }
 }
 

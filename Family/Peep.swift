@@ -11,7 +11,7 @@ import Foundation
 class Peep {
     var name: String
     var marker: GMSMarker = GMSMarker()
-    var address: String?
+    var address: String = ""
     var lastUpdated: NSDate?
     
     init(name: String) {
@@ -29,14 +29,10 @@ class Peep {
     func setCoordinates(location: CLLocationCoordinate2D) {
         marker.position = location
         
-        Central.c.reverseGeocode(marker.position) { response, error in
-            self.address = "Unknown"
-            if let address = response?.firstResult() {
-                let lines = address.lines! as [String]
-                self.address = lines.joinWithSeparator("\n")
-            }
-            
-            self.marker.snippet = self.address
+        Central.c.reverseGeocode(marker.position) {
+            address in
+            self.marker.snippet = address
+            self.address = address
             Central.c.update()
         }
     }
