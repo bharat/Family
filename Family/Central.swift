@@ -16,7 +16,9 @@ class Central {
     var me: Peep
     var mapVC: MapViewController?
     var tableVC: TableViewController?
+    var geocoder: GMSGeocoder = GMSGeocoder()
 
+    
     private init() {
         var myName = NSUserDefaults.standardUserDefaults().stringForKey("UserName")
         if myName == nil {
@@ -101,5 +103,9 @@ class Central {
     
     func getLocations() {
         store.load()
+    }
+    
+    func reverseGeocode(coords: CLLocationCoordinate2D, callback: GMSReverseGeocodeCallback) {
+        geocoder.reverseGeocodeCoordinate(coords, completionHandler: callback)
     }
 }

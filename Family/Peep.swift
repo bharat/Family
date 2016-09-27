@@ -12,12 +12,10 @@ class Peep {
     var name: String
     var marker: GMSMarker = GMSMarker()
     var address: String?
-    var geocoder: GMSGeocoder = GMSGeocoder()
     var lastUpdated: NSDate?
     
     init(name: String) {
         self.name = name
-        self.geocoder = GMSGeocoder()
         
         // Simuator doesn't have a name
         if name.isEmpty {
@@ -31,8 +29,7 @@ class Peep {
     func setCoordinates(location: CLLocationCoordinate2D) {
         marker.position = location
         
-        // Reverse geocoding should probably move to LocationService
-        geocoder.reverseGeocodeCoordinate(marker.position) { response, error in
+        Central.c.reverseGeocode(marker.position) { response, error in
             self.address = "Unknown"
             if let address = response?.firstResult() {
                 let lines = address.lines! as [String]
