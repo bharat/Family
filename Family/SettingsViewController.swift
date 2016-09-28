@@ -11,9 +11,9 @@ import Foundation
 class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     @IBOutlet var password: UIView!
     @IBOutlet var code: UITextField!
-    
     @IBOutlet var settings: UIView!
     @IBOutlet var peepPicker: UIPickerView!
+    
     let pickerData = ["Ally", "Bettina", "Bharat", "Cole"]
     
     
@@ -22,9 +22,12 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         password.hidden = false
         
         code.text = ""
-        peepPicker.selectRow(pickerData.indexOf(Central.c.me.name)!, inComponent: 0, animated: true)
+        peepPicker.selectRow(pickerData.indexOf(tbc().peeps.me.name)!, inComponent: 0, animated: true)
     }
 
+    func tbc() -> TabBarController {
+        return self.tabBarController as! TabBarController
+    }
 
     // MARK: UIPickerViewDelegate
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -52,7 +55,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     // MARK: UIPickerViewDelegate
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        Central.c.changeUser(pickerData[row])
+        tbc().changeUser(pickerData[row])
     }
     
     override func didReceiveMemoryWarning() {

@@ -10,40 +10,35 @@ import Foundation
 
 class TableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet var tableView: UITableView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        Central.c.attach(self)
-    }
 
     override func viewDidAppear(animated: Bool) {
-        Central.c.getLocations()
+        tbc().peeps.load()
     }
     
+    func tbc() -> TabBarController {
+        return self.tabBarController as! TabBarController
+    }
+    
+    // MARK: UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let peep = Array(Central.c.peeps.values)[indexPath.row]
-        Central.c.switchToMap()
-        Central.c.selectPeep(peep)
+        tbc().showMap(tbc().peeps.get(indexPath.row))
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
+    
+    // MARK: UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Central.c.peeps.count
+        return tbc().peeps.count()
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("LilPeeper")! as UITableViewCell
-        let peep = Array(Central.c.peeps.values)[indexPath.row]
+        let peep = tbc().peeps.get(indexPath.row)
         cell.textLabel?.text = peep.name
-        cell.detailTextLabel?.text = peep.address
+        cell.detailTextLabel?.text = peep.snippet()
         return cell
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 }
 

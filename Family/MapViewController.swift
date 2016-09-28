@@ -9,11 +9,7 @@
 import UIKit
 
 class MapViewController: UIViewController, GMSMapViewDelegate {
-    @IBOutlet var mapView: GMSMapView! {
-        didSet {
-            Central.c.updateMapView(mapView)
-        }
-    }
+    @IBOutlet var mapView: GMSMapView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,16 +22,23 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
             zoom = 15
         }
         mapView.animateToZoom(zoom)
-
-        Central.c.attach(self)
+        
+        tbc().peeps.load()
     }
     
     override func viewDidAppear(animated: Bool) {
-        Central.c.getLocations()
+        tbc().peeps.setMapView(mapView)
+        super.viewDidAppear(animated)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    func tbc() -> TabBarController {
+        return self.tabBarController as! TabBarController
+    }
+    
+    func select(peep: Peep) {
+        // Animate to the selected peep and show its info box
+        mapView.animateToLocation(peep.marker.position)
+        mapView.selectedMarker = peep.marker
     }
     
     // MARK: GMSMapViewDelegate

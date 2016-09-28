@@ -1,4 +1,4 @@
-//
+
 //  Peep.swift
 //  Family
 //
@@ -10,9 +10,9 @@ import Foundation
 
 class Peep {
     var name: String
-    var marker: GMSMarker = GMSMarker()
     var address: String = ""
-    var lastUpdated: NSDate?
+    var lastUpdated: NSDate = NSDate()
+    var marker: GMSMarker = GMSMarker()
     
     init(name: String) {
         self.name = name
@@ -21,19 +21,12 @@ class Peep {
         if name.isEmpty {
             self.name = "Unknown"
         }
-        
+
         self.marker.title = self.name
         self.marker.icon = UIImage(named: self.name)
     }
-    
-    func setCoordinates(location: CLLocationCoordinate2D) {
-        marker.position = location
-        
-        Central.c.reverseGeocode(marker.position) {
-            address in
-            self.marker.snippet = address
-            self.address = address
-            Central.c.update()
-        }
+
+    func snippet() -> String {
+        return "\(self.address) (\(self.lastUpdated))"
     }
 }
