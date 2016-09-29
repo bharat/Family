@@ -8,27 +8,41 @@
 
 import Foundation
 
-class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+class SettingsViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate {
     @IBOutlet var password: UIView!
     @IBOutlet var code: UITextField!
+
     @IBOutlet var settings: UIView!
-    @IBOutlet var peepPicker: UIPickerView!
+    @IBOutlet var userName: UIButton!
     
-    let pickerData = ["Ally", "Bettina", "Bharat", "Cole"]
+    let userNames = ["Ally", "Bettina", "Bharat", "Cole"]
     
-    
-    override func viewDidAppear(animated: Bool) {
-        settings.hidden = true
+    override func viewWillAppear(animated: Bool) {
         password.hidden = false
-        
         code.text = ""
-        peepPicker.selectRow(pickerData.indexOf(tbc().peeps.me.name)!, inComponent: 0, animated: true)
+        
+        settings.hidden = true
+        userName.setTitle(tbc().peeps.me.name, forState: .Normal)
     }
 
     func tbc() -> TabBarController {
         return self.tabBarController as! TabBarController
     }
 
+    @IBAction func chooseUser(sender: AnyObject) {
+        let userMenu = UIAlertController(title: nil, message: "Choose User", preferredStyle: .ActionSheet)
+        
+        for name in userNames {
+            userMenu.addAction(UIAlertAction(title: name, style: .Default, handler: {
+                alert in
+                self.userName.setTitle(name, forState: .Normal)
+                self.tbc().changeUser(name)
+            }))
+        }
+        userMenu.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: {alert in}))
+        self.presentViewController(userMenu, animated: true, completion: nil)
+    }
+    
     // MARK: UIPickerViewDelegate
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -42,20 +56,6 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
             settings.hidden = false
         }
         return false
-    }
-    
-    // MARK: UIPickerViewDataSource
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
-    }
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
-    }
-    
-    // MARK: UIPickerViewDelegate
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        tbc().changeUser(pickerData[row])
     }
     
     override func didReceiveMemoryWarning() {

@@ -51,29 +51,35 @@
                                 <rect key="frame" x="20" y="0.0" width="560" height="551"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who are you?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3As-ya-wRt">
-                                        <rect key="frame" x="201" y="260" width="159" height="32"/>
+                                        <rect key="frame" x="8" y="41" width="159" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EzL-O7-Nza">
-                                        <rect key="frame" x="121" y="312" width="320" height="216"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yrk-Pd-b7U">
+                                        <rect key="frame" x="188" y="35" width="166" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="166" id="gjf-Jw-Tg2"/>
+                                            <constraint firstAttribute="height" constant="44" id="pgt-FR-Gjp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <state key="normal" title="Harvey"/>
                                         <connections>
-                                            <outlet property="dataSource" destination="Eri-hk-xHF" id="50b-9T-YPO"/>
-                                            <outlet property="delegate" destination="Eri-hk-xHF" id="z1t-Zf-O5x"/>
+                                            <action selector="chooseUser:" destination="Eri-hk-xHF" eventType="primaryActionTriggered" id="0ZR-ec-VWD"/>
                                         </connections>
-                                    </pickerView>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="EzL-O7-Nza" firstAttribute="top" secondItem="3As-ya-wRt" secondAttribute="bottom" constant="20" id="DpB-Cd-0V7"/>
-                                    <constraint firstItem="3As-ya-wRt" firstAttribute="centerX" secondItem="CCL-EO-cmi" secondAttribute="centerX" id="hNh-d6-7mv"/>
-                                    <constraint firstItem="EzL-O7-Nza" firstAttribute="centerX" secondItem="3As-ya-wRt" secondAttribute="centerX" id="j5P-g4-isI"/>
-                                    <constraint firstItem="3As-ya-wRt" firstAttribute="centerY" secondItem="CCL-EO-cmi" secondAttribute="centerY" id="xcz-T9-HxG"/>
+                                    <constraint firstItem="3As-ya-wRt" firstAttribute="top" secondItem="CCL-EO-cmi" secondAttribute="top" constant="41" id="9q3-8U-cqO"/>
+                                    <constraint firstItem="Yrk-Pd-b7U" firstAttribute="leading" secondItem="3As-ya-wRt" secondAttribute="trailing" constant="21" id="Ful-8y-GMh"/>
+                                    <constraint firstItem="Yrk-Pd-b7U" firstAttribute="centerY" secondItem="3As-ya-wRt" secondAttribute="centerY" id="eeH-ui-aiW"/>
+                                    <constraint firstItem="3As-ya-wRt" firstAttribute="leading" secondItem="CCL-EO-cmi" secondAttribute="leadingMargin" id="fun-ej-ZBK"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="fGj-70-ei0" firstAttribute="top" secondItem="CCL-EO-cmi" secondAttribute="bottom" id="0U7-mk-dkQ"/>
                             <constraint firstItem="4Z9-yB-GAP" firstAttribute="top" secondItem="iQa-Pt-UdG" secondAttribute="topMargin" id="8tR-KL-U8W"/>
@@ -89,8 +95,8 @@
                     <connections>
                         <outlet property="code" destination="1iJ-O1-LQj" id="EjK-eG-l6b"/>
                         <outlet property="password" destination="4Z9-yB-GAP" id="zW4-qV-tpy"/>
-                        <outlet property="peepPicker" destination="EzL-O7-Nza" id="4eb-1W-dWn"/>
                         <outlet property="settings" destination="CCL-EO-cmi" id="8Xc-IR-8SI"/>
+                        <outlet property="userName" destination="Yrk-Pd-b7U" id="8cN-yJ-Yi6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DKr-z2-YdG" userLabel="First Responder" sceneMemberID="firstResponder"/>

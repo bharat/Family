@@ -50,6 +50,7 @@ class TabBarController: UITabBarController {
     
     func changeUser(name: String) {
         peeps.changeUser(name)
+        showMap(peeps.me)
     }
     
     func enterHighMode(callback: ()->Void) {
