@@ -31,6 +31,7 @@ class Peeps {
     }
     
     func updateMe(coords: CLLocationCoordinate2D) {
+        print("Location update")
         me.lastUpdated = NSDate()
         me.marker.position = coords
         store.save(me)

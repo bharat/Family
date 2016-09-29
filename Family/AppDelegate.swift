@@ -14,12 +14,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        print("application")
+        print("application didFinishLaunchingWithOptions")
 
         let api_key = NSBundle.mainBundle().objectForInfoDictionaryKey("GOOGLE_MAPS_API_KEY") as! String
         GMSServices.provideAPIKey(api_key)
 
         return true
+    }
+
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        print("application didReceiveRemoteNotification")
+        tbc().enterHighMode() {
+            print("One high mode location response received - going back to low mode")
+            self.tbc().enterLowMode()
+        }
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -32,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         print("applicationDidEnterBackground")
+        tbc().enterLowMode()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -42,13 +51,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         print("applicationDidBecomeActive")
+        tbc().enterHighMode() {
+            print("High mode location response received")
+        }
     }
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         print("applicationWillTerminate")
     }
-
-
+    
+    func tbc() -> TabBarController {
+        return window?.rootViewController as! TabBarController
+    }
 }
 

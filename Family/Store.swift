@@ -16,9 +16,11 @@ class Store {
         let url = "\(baseUrl)/load.php"
         Alamofire.request(.GET, url).responseData {
             response in
-            if !response.result.isFailure {
+            if response.result.isFailure {
+                print("Get response failure: \(response.result)")
+            }  else {
                 let data = String(data: response.result.value!, encoding: NSUTF8StringEncoding)
-                print("Get response \(data)")
+                // print("Get response \(data)")
                 let lines = data!.characters.split("\n").map(String.init)
                 for line in lines {
                     let d = line.characters.split(" ").map(String.init)
@@ -29,8 +31,6 @@ class Store {
                             latitude: Double(d[2])!,
                             longitude: Double(d[3])!))
                 }
-            }  else {
-                print("Get response failure: \(response.result)")
             }
         }
     }
@@ -40,11 +40,11 @@ class Store {
         let url = "\(baseUrl)/save.php?name=\(peep.name)&lat=\(p.latitude)&long=\(p.longitude)"
         Alamofire.request(.GET, url).responseData {
             response in
-            if !response.result.isFailure {
-                let data = String(data: response.result.value!, encoding: NSUTF8StringEncoding)
-                print("Push response \(data)")
-            } else {
+            if response.result.isFailure {
                 print("Push response failure: \(response.result)")
+            } else {
+                // let data = String(data: response.result.value!, encoding: NSUTF8StringEncoding)
+                // print("Push response \(data)")
             }
         }
    }

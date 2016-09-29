@@ -16,12 +16,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         
         mapView.delegate = self
         mapView.settings.tiltGestures = false
-        
-        var zoom = NSUserDefaults.standardUserDefaults().floatForKey("MapZoom")
-        if zoom == 0 {
-            zoom = 15
-        }
-        mapView.animateToZoom(zoom)
+        mapView.animateToZoom(1)
         
         tbc().peeps.load()
     }
@@ -33,6 +28,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     
     func tbc() -> TabBarController {
         return self.tabBarController as! TabBarController
+    }
+    
+    func zoomTo(zoom: Float) {
+        mapView.animateToZoom(zoom)
     }
     
     func select(peep: Peep) {
