@@ -28,7 +28,7 @@ class Peep {
     }
 
     func snippet() -> String {
-        return "\(self.address) (\(self.lastUpdated))"
+        return "\(address) (\(lastUpdated.toNaturalString(NSDate())!) ago)"
     }
 
     func stopObserving() {

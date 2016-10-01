@@ -54,7 +54,7 @@ class LocationService {
             var address: String! = "Unknown"
             if let res = response?.firstResult() {
                 let lines = res.lines! as [String]
-                address = lines.joinWithSeparator("\n")
+                address = lines.joinWithSeparator(", ")
             }
             callback(address: address)
         }
