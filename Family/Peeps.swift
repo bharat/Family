@@ -32,7 +32,7 @@ class Peeps {
     }
     
     func updateMe(coords: CLLocationCoordinate2D) {
-        Debug.print("Location update")
+        // Debug.print("Location update")
         me.setLocation(coords)
         store.save(me)
     }

@@ -23,9 +23,10 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UITextViewD
     override func viewDidLoad() {
         password.hidden = false
         code.text = ""
-        debugAutoScrollSwitch.setOn(true, animated: false)
+        code.becomeFirstResponder()
         
         settings.hidden = true
+        debugAutoScrollSwitch.setOn(true, animated: false)
     }
     
     override func viewWillAppear(animated: Bool) {

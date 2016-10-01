@@ -50,7 +50,7 @@ class TabBarController: UITabBarController {
     }
     
     func startLocationTracking(cost: CostMode, success: ()->Void) {
-        Debug.print("--> Location tracking in \(cost) mode")
+        // Debug.print("--> Location tracking in \(cost) mode")
         locationService.start(cost) {
             location in
             self.updateMe(location.coordinate)

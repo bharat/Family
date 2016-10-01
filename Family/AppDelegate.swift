@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tbc().startLocationTracking(.High) {
             Debug.print("One high cost location response received - going back to low cost now")
             self.tbc().startLocationTracking(.Low) {
-                Debug.print("Low cost location response received (post notification)")
+                // Debug.print("Low cost location response received (post notification)")
             }
         }
     }
@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         Debug.print("applicationDidEnterBackground")
         tbc().startLocationTracking(.Low) {
-            Debug.print("Low cost location response received")
+            // Debug.print("Low cost location response received")
         }
     }
 
@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         Debug.print("applicationDidBecomeActive")
         tbc().startLocationTracking(.High) {
-            Debug.print("High cost location response received")
+            // Debug.print("High cost location response received")
         }
     }
 
