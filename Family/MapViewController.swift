@@ -10,20 +10,21 @@ import UIKit
 
 class MapViewController: UIViewController, GMSMapViewDelegate {
     @IBOutlet var mapView: GMSMapView!
+    var selected: Peep?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mapView.delegate = self
         mapView.settings.tiltGestures = false
-        mapView.animateToZoom(1)
+        mapView.animateToZoom(15)
         
         tbc().peeps.load()
     }
     
     override func viewDidAppear(animated: Bool) {
-        tbc().peeps.setMapView(mapView)
         super.viewDidAppear(animated)
+        tbc().peeps.setMapView(mapView)
     }
     
     func tbc() -> TabBarController {
@@ -35,14 +36,19 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     }
     
     func select(peep: Peep) {
-        // Animate to the selected peep and show its info box
-        mapView.animateToLocation(peep.marker.position)
+        selected?.stopObserving()
+
         mapView.selectedMarker = peep.marker
+        mapView.animateToLocation(peep.marker.position)
+        
+        peep.startObserving() {
+            self.mapView.animateToLocation(peep.marker.position)
+        }
+        selected = peep
     }
-    
+        
     // MARK: GMSMapViewDelegate
     func mapView(mapView: GMSMapView, idleAtCameraPosition position: GMSCameraPosition) {
-        NSUserDefaults.standardUserDefaults().setFloat(position.zoom, forKey: "MapZoom")
         position.zoom
     }
 }

@@ -10,6 +10,7 @@ target 'Family' do
   pod "GoogleMaps"
   pod "RandomKit"
   pod "Alamofire", "~> 3.5.0"
+  pod "SwiftDate", "~> 3.0.8"
 
   target 'FamilyTests' do
     inherit! :search_paths

@@ -10,6 +10,7 @@ import Foundation
 
 class Peeps {
     var me: Peep!
+    var selected: Peep?
     private let loc: LocationService!
     private let store: Store!
     private var data: [String: Peep] = [:]
@@ -17,7 +18,7 @@ class Peeps {
     init(locationService: LocationService, store: Store) {
         var name = NSUserDefaults.standardUserDefaults().stringForKey("UserName")
         if name == nil {
-            name = "Bharat" // got start somewhere
+            name = "Bharat" // gotta start somewhere
         }
         
         me = Peep(name: name!)
@@ -31,9 +32,8 @@ class Peeps {
     }
     
     func updateMe(coords: CLLocationCoordinate2D) {
-        print("Location update")
-        me.lastUpdated = NSDate()
-        me.marker.position = coords
+        Debug.print("Location update")
+        me.setLocation(coords)
         store.save(me)
     }
     
@@ -43,9 +43,7 @@ class Peeps {
             return
         }
         
-        var p: Peep?
-        p = data[name]
-        
+        var p: Peep? = data[name]
         if p == nil {
             p = Peep(name: name)
             data[name] = p
@@ -73,14 +71,7 @@ class Peeps {
         return data.count
     }
     
-    func changeUser(name: String) {
-        for peep in data.values {
-            peep.marker.map = nil
-        }
-        data.removeAll()
-        
-        me = Peep(name: name)
-        data[me.name] = me
-        NSUserDefaults.standardUserDefaults().setValue(name, forKeyPath: "UserName")
+    func select(peep: Peep) {
+        selected = peep
     }
 }

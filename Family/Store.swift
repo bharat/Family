@@ -17,10 +17,10 @@ class Store {
         Alamofire.request(.GET, url).responseData {
             response in
             if response.result.isFailure {
-                print("Get response failure: \(response.result)")
+                Debug.print("Get response failure: \(response.result)")
             }  else {
                 let data = String(data: response.result.value!, encoding: NSUTF8StringEncoding)
-                // print("Get response \(data)")
+                // Debug.print("Get response \(data)")
                 let lines = data!.characters.split("\n").map(String.init)
                 for line in lines {
                     let d = line.characters.split(" ").map(String.init)
@@ -41,10 +41,10 @@ class Store {
         Alamofire.request(.GET, url).responseData {
             response in
             if response.result.isFailure {
-                print("Push response failure: \(response.result)")
+                Debug.print("Push response failure: \(response.result)")
             } else {
                 // let data = String(data: response.result.value!, encoding: NSUTF8StringEncoding)
-                // print("Push response \(data)")
+                // Debug.print("Push response \(data)")
             }
         }
    }

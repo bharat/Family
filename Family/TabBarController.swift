@@ -13,13 +13,11 @@ class TabBarController: UITabBarController {
     var peeps: Peeps!
     var store: Store!
     var locationService: LocationService!
+    var selected: Peep?
     
     override func viewDidLoad() {
-        print("TabBarController.viewDidLoad")
-        locationService = LocationService() {
-            location in
-            self.updateMe(location.coordinate)
-        }
+        Debug.print("TabBarController.viewDidLoad")
+        locationService = LocationService()
         store = Store()
         peeps = Peeps(locationService: locationService, store: store)
     }
@@ -28,16 +26,19 @@ class TabBarController: UITabBarController {
         peeps.updateMe(coords)
         
         if firstUpdate {
-            showMap(peeps.me)
+            showMap()
+            selectPeep(peeps.me)
             firstUpdate = false
-        
-            mapView().zoomTo(NSUserDefaults.standardUserDefaults().floatForKey("MapZoom"))
         }
     }
     
-    func showMap(peep: Peep) {
-        self.selectedIndex = 0
+    func selectPeep(peep: Peep) {
+        selected = peep
         mapView().select(peep)
+    }
+    
+    func showMap() {
+        self.selectedIndex = 0
     }
     
     func showTable() {
@@ -48,18 +49,12 @@ class TabBarController: UITabBarController {
         return self.viewControllers![0] as! MapViewController
     }
     
-    func changeUser(name: String) {
-        peeps.changeUser(name)
-        showMap(peeps.me)
-    }
-    
-    func enterHighMode(callback: ()->Void) {
-        print("--> HIGH MODE")
-        locationService.startHighCost(callback)
-    }
-
-    func enterLowMode() {
-        print("--> LOW MODE")
-        locationService.startLowCost()
+    func startLocationTracking(cost: CostMode, success: ()->Void) {
+        Debug.print("--> Location tracking in \(cost) mode")
+        locationService.start(cost) {
+            location in
+            self.updateMe(location.coordinate)
+            success()
+        }
     }
 }

@@ -21,7 +21,8 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     // MARK: UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tbc().showMap(tbc().peeps.get(indexPath.row))
+        tbc().showMap()
+        tbc().selectPeep(tbc().peeps.get(indexPath.row))
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
