@@ -48,13 +48,12 @@ class LocationService {
         request?.start()
     }
     
-    func reverseGeocode(coords: CLLocationCoordinate2D, callback: (address: String) -> Void) {
+    func reverseGeocode(coords: CLLocationCoordinate2D, callback: (address: [String]) -> Void) {
         geocoder.reverseGeocodeCoordinate(coords) {
             response, error in
-            var address: String! = "Unknown"
+            var address: [String] = ["Unknown"]
             if let res = response?.firstResult() {
-                let lines = res.lines! as [String]
-                address = lines.joinWithSeparator(", ")
+                address = res.lines! as [String]
             }
             callback(address: address)
         }

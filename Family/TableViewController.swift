@@ -38,7 +38,8 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
         let cell = tableView.dequeueReusableCellWithIdentifier("LilPeeper")! as UITableViewCell
         let peep = tbc().peeps.get(indexPath.row)
         cell.textLabel?.text = peep.name
-        cell.detailTextLabel?.text = peep.snippet()
+        
+        cell.detailTextLabel?.text = peep.snippet().joinWithSeparator("\n")
         return cell
     }
 }

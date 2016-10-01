@@ -10,7 +10,7 @@ import Foundation
 
 class Peep {
     var name: String
-    var address: String = ""
+    var address: [String] = []
     var lastUpdated: NSDate = NSDate()
     var observerCallback: (() -> Void)?
     var marker: GMSMarker = GMSMarker()
@@ -27,8 +27,10 @@ class Peep {
         self.marker.icon = UIImage(named: self.name)
     }
 
-    func snippet() -> String {
-        return "\(address) (\(lastUpdated.toNaturalString(NSDate())!) ago)"
+    func snippet() -> [String] {
+        var copy = address
+        copy.append("\(lastUpdated.toNaturalString(NSDate())!) ago")
+        return copy
     }
 
     func stopObserving() {
