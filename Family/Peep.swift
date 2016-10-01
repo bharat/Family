@@ -10,7 +10,7 @@ import Foundation
 
 class Peep {
     var name: String
-    var address: [String] = []
+    private var address: [String] = []
     var lastUpdated: NSDate = NSDate()
     var observerCallback: (() -> Void)?
     var marker: GMSMarker = GMSMarker()
@@ -39,6 +39,11 @@ class Peep {
     
     func startObserving(callback: ()->Void) {
         observerCallback = callback
+    }
+    
+    func setAddress(address: [String]) {
+        self.address = address
+        self.marker.snippet = snippet().joinWithSeparator("\n")
     }
     
     func setLocation(coords: CLLocationCoordinate2D) {

@@ -53,7 +53,7 @@ class Peeps {
         p!.marker.position = coords
         loc.reverseGeocode(coords) {
             address in
-            p!.address = address
+            p!.setAddress(address)
         }
     }
     
